@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"proto-lesson/pb"
 
@@ -51,5 +50,10 @@ func main() {
 		log.Fatal("marshaling error: ", err)
 	}
 
-	fmt.Println(out)
+	// fmt.Println(out)
+
+	readEmployee := &pb.Employee{}
+	if err := jsonpb.UnmarshalString(out, readEmployee); err != nil {
+		log.Fatal("unmarshaling error: ", err)
+	}
 }
